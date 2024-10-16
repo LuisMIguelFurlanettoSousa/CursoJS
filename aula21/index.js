@@ -4,9 +4,9 @@ Operadores de compração
 >= maior que ou igual a
 < menor que
 <= menor que ou igual a
-== igualdade (valor)
+== igualdade (valor) **************
 === igualdade estrita (valor e tipo)
-!= diferente (valor)
+!= diferente (valor) **************
 !== diferente estrito (valor e tipo)
 */
 // Maior que (>)
