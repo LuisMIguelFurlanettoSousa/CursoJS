@@ -1,17 +1,23 @@
-function mostraData(data, dSemana, mesEscrito) {
-    const elementocontainer = document.querySelector('.container');
+/*function mostraData(data, dSemana, mesEscrito) {
+    const elementocontainer = document.querySelector('.container h1');
     const dia = data.getDate();
     const hrs = data.getHours();
     const min = data.getMinutes();
     const ano = data.getFullYear();
-    elementocontainer.innerHTML = `<p>${dSemana}, ${dia} ${mesEscrito} ${ano} ${hrs}:${min}</p>`;
+    elementocontainer.innerHTML = (
+        `<p>${dSemana}, ${dia} de ${mesEscrito} de ${ano} ` +
+        `${zeroAEsquerda(hrs)}:${zeroAEsquerda(min)}</p>`
+    );
+}
 
+function zeroAEsquerda(num){
+    return num >= 10 ? num : `0${num}`;
 }
 
 function diaSemana(day){
     switch(day){
         case 0:
-            day = 'Domingo-Feira';
+            day = 'Domingo';
             break
         case 1:
             day = 'Segunda-Feira';
@@ -79,4 +85,13 @@ function mes(mes){
 const data = new Date();
 const dSemana = diaSemana(data.getDay());
 const mesEscrito = mes(data.getMonth());
-mostraData(data, dSemana, mesEscrito);
+mostraData(data, dSemana, mesEscrito); */
+
+const elementocontainer = document.querySelector('.container h1');
+const data = new Date();
+const opcoes = {
+    dateStyle: 'full',
+    timeStyle: 'short'
+};
+
+elementocontainer.innerHTML = data.toLocaleString('pt-BR', opcoes);
