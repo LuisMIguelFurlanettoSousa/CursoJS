@@ -34,5 +34,6 @@ function formataData(d){
 }
 
 const data = new Date();
+console.log(data);
 const dataBrasil = formataData(data)
 console.log(dataBrasil);
