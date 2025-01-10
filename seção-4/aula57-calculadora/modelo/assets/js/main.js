@@ -68,57 +68,46 @@
 function Calculadora() {
     this.display = document.querySelector('.display');
 
-    this.inicia = function() {
+    this.inicia = () => {
         this.display.focus();
         this.clicabotoes();
         this.clicaBackEspace();
         this.clicaEnter();
     }
 
-    this.clicabotoes = function() {
+    this.clicabotoes = () => {
         document.addEventListener('click', (e) => {
             const el = e.target;
     
-            if (el.classList.contains('btn-num')) {
-                this.btnParaDisplay(el.innerText);
-            }
-
-            if (el.classList.contains('btn-eq')) {
-                this.realizaConta(this.display.value);
-            }
-
-            if (el.classList.contains('btn-clear')) {
-                this.limpaDisplay();
-            }
-
-            if (el.classList.contains('btn-del')){
-                this.limpaUm();
-            }
+            if (el.classList.contains('btn-num')) this.btnParaDisplay(el.innerText);
+            if (el.classList.contains('btn-eq')) this.realizaConta(this.display.value);
+            if (el.classList.contains('btn-clear')) this.limpaDisplay();
+            if (el.classList.contains('btn-del')) this.limpaUm();
         });
     };
 
-    this.clicaBackEspace = function() {
-        document.addEventListener('keydown', (e) => {
+    this.clicaBackEspace = () => {
+        document.addEventListener('keypress', (e) => {
             if (e.key === 'Backspace') {
                 this.limpaUm();
             }
         });
     }
 
-    this.clicaEnter = function() {
-        document.addEventListener('keydown', (e) => {
+    this.clicaEnter = () => {
+        document.addEventListener('keyup', (e) => {
             if (e.key === 'Enter') {
                 this.realizaConta(this.display.value);
             }
         })
     }
 
-    this.btnParaDisplay = function(valor) {
+    this.btnParaDisplay = (valor) => {
         this.display.value += valor;
         this.display.focus();
     }
 
-    this.realizaConta = function(conta) {
+    this.realizaConta = (conta) => {
         try {
             const resultado = eval(conta);
 
@@ -136,12 +125,12 @@ function Calculadora() {
             return;
         }
     }
-    this.limpaDisplay = function() {
+    this.limpaDisplay = () => {
         this.display.value = '';
         this.display.focus();
     }
 
-    this.limpaUm = function() {
+    this.limpaUm = () => {
         this.display.value = this.display.value.slice(0, -1);
         this.display.focus();
     }
