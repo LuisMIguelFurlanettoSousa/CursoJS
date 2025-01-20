@@ -1,0 +1,148 @@
+/* Importar fonte */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+:root {
+    --primary-color: #2c3e50;  /* Azul escuro */
+    --secondary-color: #ecf0f1;  /* Cinza claro */
+    --accent-color: #e74c3c;  /* Vermelho */
+    --button-color: #3498db;  /* Azul claro */
+    --text-color: #2c3e50;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: var(--secondary-color);
+    width: 100%;
+    max-width: 500px;
+    padding: 30px 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+input.input-nova-tarefa {
+    width: 70%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    margin-right: 5px;
+    outline: none;
+    box-shadow: var(--box-shadow);
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 1em;
+    color: var(--secondary-color);
+    background: var(--button-color);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background 0.3s ease;
+    box-shadow: var(--box-shadow);
+}
+
+button:hover {
+    background: var(--primary-color);
+}
+
+button.btn-rmv-all {
+    display: block;
+    margin: 15px auto; /* Centraliza horizontalmente */
+    width: 80%; /* Largura maior para destacar */
+    padding: 10px 15px;
+    font-size: 1em;
+    color: var(--secondary-color);
+    background: var(--accent-color);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background 0.3s ease;
+    box-shadow: var(--box-shadow);
+}
+
+input.input-nova-tarefa {
+    width: calc(100% - 120px); /* Ajusta o tamanho do input para caber melhor ao lado do botão */
+}
+
+button.btn-rmv-all:hover {
+    background: #c0392b;
+}
+
+.container {
+    text-align: center;
+}
+
+.tarefas {
+    list-style: none;
+    margin-top: 20px;
+    padding: 0;
+}
+
+.tarefas li {
+    background: var(--secondary-color);
+    color: var(--text-color);
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border: 1px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--box-shadow);
+}
+
+.tarefas li button.apagar {
+    padding: 5px 10px;
+    font-size: 0.8em;
+    color: var(--secondary-color);
+    background: var(--accent-color);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.tarefas li button.apagar:hover {
+    background: #c0392b;
+}
+
+@media (max-width: 600px) {
+    input.input-nova-tarefa {
+        width: 60%;
+        margin-bottom: 10px;
+    }
+
+    button {
+        font-size: 0.9em;
+    }
+
+    .tarefas li {
+        font-size: 0.9em;
+    }
+}
