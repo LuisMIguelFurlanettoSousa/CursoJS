@@ -14,14 +14,31 @@ Produto.prototype.desconto = function (valor) {
 };
 
 function Camiseta(nome, valor, cor) {
-    Produto.call(this, nome, valor)
+    Produto.call(this, nome, valor); // Camiset herda todo o conteudo que Produto tem e pode tb ter conteudo so dela
+    this.cor = cor;
+};
+
+
+Camiseta.prototype = Object.create(Produto.prototype);
+Camiseta.prototype.constructor = Camiseta;
+
+Camiseta.prototype.aumentoP = function(percentual) {
+    this.valor = this.valor + (this.valor * (percentual / 100));
 }
 
-Camiseta.prototype = Object.create(Produto.prototype)
+function Caneca(nome, valor, material) {
+    Produto.call(this, nome, valor);
 
-const camiseta = new Camiseta('oversize', 110, 'black')
+    this.material = material;
+}
 
+Caneca.prototype = Object.create(Produto.prototype);
+Caneca.prototype.constructor = Caneca;
 
-camiseta.aumento(10)
-console.log(camiseta)
-console.log(Produto)
+const camiseta = new Camiseta('oversize', 1, 'black');
+const caneca = new Caneca('caneca fudida', 20, 'madeira')
+const produto = new Produto('gen', 20);
+
+console.log(caneca);
+// console.log(camiseta);
+// console.log(produto);

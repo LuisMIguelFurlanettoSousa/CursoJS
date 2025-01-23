@@ -52,4 +52,3 @@ p3.desconto(50) // para dar certo sendo um obj literal eu tenho que passar o pro
 console.log(p1);
 console.log(p2);
 console.log(p3);
-console.log();
