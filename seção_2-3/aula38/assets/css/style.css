@@ -1,0 +1,40 @@
+/* Reseta o estilo base do navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e0f7fa; /* Cor de fundo suave */
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Estilo do container principal */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #ffffff; /* Fundo branco para contraste */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Estilo do título */
+.container h1 {
+    font-size: 2rem;
+    text-align: center;
+    color: #00796b; /* Cor de destaque */
+    margin-bottom: 20px;
+}
+
+/* Estilo geral dos elementos na seção, sem alterar os parágrafos */
+.container .paragrafos {
+    padding: 15px;
+    background-color: #b2dfdb; /* Fundo suave para o contêiner dos parágrafos */
+    border-radius: 5px;
+    border: 1px solid #80cbc4; /* Borda leve ao redor */
+}
