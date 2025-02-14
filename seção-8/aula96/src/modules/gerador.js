@@ -19,4 +19,3 @@ export default function GeraSenha(qtd, maiuscula, minuscula, numero, simbolo) {
 
     return senhaGerada.join('').slice(0, qtd)
 }
-

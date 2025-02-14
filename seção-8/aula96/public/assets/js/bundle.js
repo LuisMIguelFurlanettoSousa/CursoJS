@@ -2,6 +2,77 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/modules/formGeraSenha.js":
+/*!**************************************!*\
+  !*** ./src/modules/formGeraSenha.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _gerador__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./gerador */ "./src/modules/gerador.js");
+
+var SenhaHtml = document.querySelector('.senha-gerada');
+var qtd = document.querySelector('.qtd');
+var letrasMaiusculas = document.querySelector('.chk-maiuculas');
+var letrasMinusculas = document.querySelector('.chk-minusculas');
+var numeros = document.querySelector('.chk-numeros');
+var simbolos = document.querySelector('.chk-simbolos');
+var botao = document.querySelector('.gerar');
+
+//export default () => {
+botao.addEventListener('click', function () {
+  var senha = gera();
+  SenhaHtml.innerHTML = senha;
+});
+//}
+
+function gera() {
+  var senha = (0,_gerador__WEBPACK_IMPORTED_MODULE_0__["default"])(qtd.value, letrasMaiusculas.checked, letrasMinusculas.checked, numeros.checked, simbolos.checked);
+  return senha;
+}
+
+/***/ }),
+
+/***/ "./src/modules/gerador.js":
+/*!********************************!*\
+  !*** ./src/modules/gerador.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ GeraSenha)
+/* harmony export */ });
+var rand = function rand(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+};
+var geraMaiuscula = function geraMaiuscula() {
+  return String.fromCharCode(rand(65, 91));
+};
+var geraMinusculas = function geraMinusculas() {
+  return String.fromCharCode(rand(97, 123));
+};
+var geraNumeros = function geraNumeros() {
+  return String.fromCharCode(rand(48, 58));
+};
+var simbolos = ["!@#$%^&*()_-+=,.;:'?/|{}[]`~<>"];
+var geraSimbolos = function geraSimbolos() {
+  return simbolos[0][rand(0, 30)];
+};
+function GeraSenha(qtd, maiuscula, minuscula, numero, simbolo) {
+  var senhaGerada = [];
+  qtd = Number(qtd);
+  for (var i = 0; i < qtd; i++) {
+    maiuscula && senhaGerada.push(geraMaiuscula());
+    minuscula && senhaGerada.push(geraMinusculas());
+    numero && senhaGerada.push(geraNumeros());
+    simbolo && senhaGerada.push(geraSimbolos());
+  }
+  return senhaGerada.join('').slice(0, qtd);
+}
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./src/assets/css/style.css":
 /*!************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./src/assets/css/style.css ***!
@@ -20,66 +91,100 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
-___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `:root {
-  --primary-color: rgb(17, 86, 102);
-  --primary-color-darker: rgb(9, 48, 56);
-}
-
+___CSS_LOADER_EXPORT___.push([module.id, `/* Reset básico para remover margens e paddings padrão */
 * {
-  box-sizing: border-box;
-  outline: 0;
-}
-
-body {
   margin: 0;
   padding: 0;
-  background: var(--primary-color);
-  font-family: 'Open sans', sans-serif;
-  font-size: 1.3em;
-  line-height: 1.5em;
+  box-sizing: border-box;
 }
 
+/* Estilo geral do corpo da página */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1a1a1a; /* Fundo escuro */
+  color: #e0e0e0; /* Texto claro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Container principal */
 .container {
-  max-width: 640px;
-  margin: 50px auto;
-  background: #fff;
+  background-color: #2d2d2d; /* Fundo escuro para o container */
   padding: 20px;
-  border-radius: 10px;
-}
-
-form input, form label, form button {
-  display: block;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra mais escura */
   width: 100%;
-  margin-bottom: 10px;
+  max-width: 400px;
+  text-align: center;
 }
 
-form input {
+/* Título */
+.container h1 {
+  margin-bottom: 20px;
   font-size: 24px;
-  height: 50px;
-  padding: 0 20px;
+  color: #ff4444; /* Vermelho escuro para o título */
 }
 
-form input:focus {
-  outline: 1px solid var(--primary-color);
-}
-
-form button {
-  border: none;
-  background: var(--primary-color);
-  color: #fff;
+/* Campo de senha gerada */
+.senha-gerada {
+  background-color: #3d3d3d; /* Fundo escuro para o campo de senha */
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
   font-size: 18px;
-  font-weight: 700;
-  height: 50px;
-  cursor: pointer;
-  margin-top: 30px;
+  font-weight: bold;
+  word-wrap: break-word;
+  color: #e0e0e0; /* Texto claro */
 }
 
-form button:hover {
-  background: var(--primary-color-darker);
+/* Estilo para os inputs e labels */
+.container input[type="number"],
+.container input[type="checkbox"] {
+  margin: 10px 0;
 }
-`, "",{"version":3,"sources":["webpack://./src/assets/css/style.css"],"names":[],"mappings":"AACA;EACE,iCAAiC;EACjC,sCAAsC;AACxC;;AAEA;EACE,sBAAsB;EACtB,UAAU;AACZ;;AAEA;EACE,SAAS;EACT,UAAU;EACV,gCAAgC;EAChC,oCAAoC;EACpC,gBAAgB;EAChB,kBAAkB;AACpB;;AAEA;EACE,gBAAgB;EAChB,iBAAiB;EACjB,gBAAgB;EAChB,aAAa;EACb,mBAAmB;AACrB;;AAEA;EACE,cAAc;EACd,WAAW;EACX,mBAAmB;AACrB;;AAEA;EACE,eAAe;EACf,YAAY;EACZ,eAAe;AACjB;;AAEA;EACE,uCAAuC;AACzC;;AAEA;EACE,YAAY;EACZ,gCAAgC;EAChC,WAAW;EACX,eAAe;EACf,gBAAgB;EAChB,YAAY;EACZ,eAAe;EACf,gBAAgB;AAClB;;AAEA;EACE,uCAAuC;AACzC","sourcesContent":["@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');\n:root {\n  --primary-color: rgb(17, 86, 102);\n  --primary-color-darker: rgb(9, 48, 56);\n}\n\n* {\n  box-sizing: border-box;\n  outline: 0;\n}\n\nbody {\n  margin: 0;\n  padding: 0;\n  background: var(--primary-color);\n  font-family: 'Open sans', sans-serif;\n  font-size: 1.3em;\n  line-height: 1.5em;\n}\n\n.container {\n  max-width: 640px;\n  margin: 50px auto;\n  background: #fff;\n  padding: 20px;\n  border-radius: 10px;\n}\n\nform input, form label, form button {\n  display: block;\n  width: 100%;\n  margin-bottom: 10px;\n}\n\nform input {\n  font-size: 24px;\n  height: 50px;\n  padding: 0 20px;\n}\n\nform input:focus {\n  outline: 1px solid var(--primary-color);\n}\n\nform button {\n  border: none;\n  background: var(--primary-color);\n  color: #fff;\n  font-size: 18px;\n  font-weight: 700;\n  height: 50px;\n  cursor: pointer;\n  margin-top: 30px;\n}\n\nform button:hover {\n  background: var(--primary-color-darker);\n}\n"],"sourceRoot":""}]);
+
+.container input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #555; /* Borda escura */
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #3d3d3d; /* Fundo escuro */
+  color: #e0e0e0; /* Texto claro */
+}
+
+.container input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* Estilo para o botão */
+.gerar {
+  background-color: #ff4444; /* Vermelho escuro */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease; /* Transição suave */
+}
+
+.gerar:hover {
+  background-color: #cc0000; /* Vermelho mais escuro no hover */
+}
+
+/* Estilo para os labels dos checkboxes */
+.container label {
+  display: block;
+  margin: 10px 0;
+  font-size: 16px;
+  color: #e0e0e0; /* Texto claro */
+}`, "",{"version":3,"sources":["webpack://./src/assets/css/style.css"],"names":[],"mappings":"AAAA,wDAAwD;AACxD;EACE,SAAS;EACT,UAAU;EACV,sBAAsB;AACxB;;AAEA,oCAAoC;AACpC;EACE,8BAA8B;EAC9B,yBAAyB,EAAE,iBAAiB;EAC5C,cAAc,EAAE,gBAAgB;EAChC,aAAa;EACb,uBAAuB;EACvB,mBAAmB;EACnB,aAAa;EACb,SAAS;AACX;;AAEA,wBAAwB;AACxB;EACE,yBAAyB,EAAE,kCAAkC;EAC7D,aAAa;EACb,kBAAkB;EAClB,uCAAuC,EAAE,uBAAuB;EAChE,WAAW;EACX,gBAAgB;EAChB,kBAAkB;AACpB;;AAEA,WAAW;AACX;EACE,mBAAmB;EACnB,eAAe;EACf,cAAc,EAAE,kCAAkC;AACpD;;AAEA,0BAA0B;AAC1B;EACE,yBAAyB,EAAE,uCAAuC;EAClE,aAAa;EACb,kBAAkB;EAClB,mBAAmB;EACnB,eAAe;EACf,iBAAiB;EACjB,qBAAqB;EACrB,cAAc,EAAE,gBAAgB;AAClC;;AAEA,mCAAmC;AACnC;;EAEE,cAAc;AAChB;;AAEA;EACE,WAAW;EACX,YAAY;EACZ,sBAAsB,EAAE,iBAAiB;EACzC,kBAAkB;EAClB,eAAe;EACf,yBAAyB,EAAE,iBAAiB;EAC5C,cAAc,EAAE,gBAAgB;AAClC;;AAEA;EACE,kBAAkB;AACpB;;AAEA,wBAAwB;AACxB;EACE,yBAAyB,EAAE,oBAAoB;EAC/C,WAAW;EACX,YAAY;EACZ,kBAAkB;EAClB,kBAAkB;EAClB,eAAe;EACf,eAAe;EACf,gBAAgB;EAChB,sCAAsC,EAAE,oBAAoB;AAC9D;;AAEA;EACE,yBAAyB,EAAE,kCAAkC;AAC/D;;AAEA,yCAAyC;AACzC;EACE,cAAc;EACd,cAAc;EACd,eAAe;EACf,cAAc,EAAE,gBAAgB;AAClC","sourcesContent":["/* Reset básico para remover margens e paddings padrão */\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n\n/* Estilo geral do corpo da página */\nbody {\n  font-family: Arial, sans-serif;\n  background-color: #1a1a1a; /* Fundo escuro */\n  color: #e0e0e0; /* Texto claro */\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100vh;\n  margin: 0;\n}\n\n/* Container principal */\n.container {\n  background-color: #2d2d2d; /* Fundo escuro para o container */\n  padding: 20px;\n  border-radius: 8px;\n  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra mais escura */\n  width: 100%;\n  max-width: 400px;\n  text-align: center;\n}\n\n/* Título */\n.container h1 {\n  margin-bottom: 20px;\n  font-size: 24px;\n  color: #ff4444; /* Vermelho escuro para o título */\n}\n\n/* Campo de senha gerada */\n.senha-gerada {\n  background-color: #3d3d3d; /* Fundo escuro para o campo de senha */\n  padding: 10px;\n  border-radius: 4px;\n  margin-bottom: 20px;\n  font-size: 18px;\n  font-weight: bold;\n  word-wrap: break-word;\n  color: #e0e0e0; /* Texto claro */\n}\n\n/* Estilo para os inputs e labels */\n.container input[type=\"number\"],\n.container input[type=\"checkbox\"] {\n  margin: 10px 0;\n}\n\n.container input[type=\"number\"] {\n  width: 100%;\n  padding: 8px;\n  border: 1px solid #555; /* Borda escura */\n  border-radius: 4px;\n  font-size: 16px;\n  background-color: #3d3d3d; /* Fundo escuro */\n  color: #e0e0e0; /* Texto claro */\n}\n\n.container input[type=\"checkbox\"] {\n  margin-right: 10px;\n}\n\n/* Estilo para o botão */\n.gerar {\n  background-color: #ff4444; /* Vermelho escuro */\n  color: #fff;\n  border: none;\n  padding: 10px 20px;\n  border-radius: 4px;\n  font-size: 16px;\n  cursor: pointer;\n  margin-top: 10px;\n  transition: background-color 0.3s ease; /* Transição suave */\n}\n\n.gerar:hover {\n  background-color: #cc0000; /* Vermelho mais escuro no hover */\n}\n\n/* Estilo para os labels dos checkboxes */\n.container label {\n  display: block;\n  margin: 10px 0;\n  font-size: 16px;\n  color: #e0e0e0; /* Texto claro */\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -605,6 +710,8 @@ var __webpack_exports__ = {};
   \*********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/css/style.css */ "./src/assets/css/style.css");
+/* harmony import */ var _modules_formGeraSenha__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/formGeraSenha */ "./src/modules/formGeraSenha.js");
+
 
 })();
 
