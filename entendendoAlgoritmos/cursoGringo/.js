@@ -48,6 +48,29 @@ class LinkedList {
         return temp
     }
 
+    unshift(value) {
+        const newNode = new Node(value)
+        if(!this.head) {
+            this.head = newNode
+            this.tail = newNode
+         } else {
+            newNode.next = this.head
+            this.head = newNode
+         }
+         this.length++
+         return this
+    }
+
+    shift() {
+        if(!this.head) return undefined
+
+        const firstElement = this.head.value
+        const temp = this.head
+        this.head = temp.next
+        this.length--
+        return firstElement
+    }
+
     printList() {
         let temp = this.head
         while (temp !== null) {
@@ -79,6 +102,9 @@ class LinkedList {
 
 let myLinkedList = new LinkedList(4)
 myLinkedList.push(7)
+myLinkedList.unshift(9)
+const first = myLinkedList.shift()
+console.log(first)
 myLinkedList.getHead()
 myLinkedList.getTail()
 myLinkedList.getLength()
