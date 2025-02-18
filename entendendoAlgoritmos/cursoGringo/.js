@@ -71,6 +71,21 @@ class LinkedList {
         return firstElement
     }
 
+    // shift() {
+    //     if(!this.head) return null
+    //     const temp = this.head
+    //     this.head = this.head.next
+        
+    //     this.length--
+        
+    //     if(this.length === 0) {
+    //         this.tail = this.head
+    //         this.tail.next = null
+    //     }
+        
+    //     return temp
+    // }
+
     printList() {
         let temp = this.head
         while (temp !== null) {

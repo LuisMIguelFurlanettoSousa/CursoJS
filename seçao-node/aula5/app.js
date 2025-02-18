@@ -1,29 +1,27 @@
-const path = require('path');
-const caminhoArquivo = path.resolve(__dirname, 'teste.json');
+const path = require('path')
 
-//const escrever = require('./madulos/escrever');
-const ler = require('./madulos/ler');
+const caminhoArquivo = path.resolve(__dirname, `teste.json`)
+const ler = require('./modulos/ler')
+const escrever = require(`./modulos/escrever`)
 
-// const pessoas = [
-//     { nome: 'Luis'},
-//     { nome: 'Julia'},
-//     { nome: 'Eu'},
-//     { nome: 'sla'},
-// ];
+// const dados = [
+//     {nome: `luis`},
+//     {nome: `julia`},
+//     {nome: `luis`},
+//     {nome: `julia`},
+// ]
 
-// const json = JSON.stringify(pessoas, '', 1);
-// escrever(cominhoArquivo, json);
+// const json = JSON.stringify(dados,' ', 2)
 
-async function leArquivo(caminho) {
-    const dados = await ler(caminho);
-    return renderizaDados(dados);
+// escrever(caminhoArquivo, json)
+
+async function lerArquivo(caminhoArquivo) {
+    const conteudo = await ler(caminhoArquivo) 
+    return conteudo
 }
 
-function renderizaDados(dados) {
-    dados = JSON.parse(dados);
-    dados.forEach(val => console.log(val.nome));
-}
+const conteudoArquivo = lerArquivo(caminhoArquivo)
+    .then((resp) => console.log(resp))
+    .catch((e) => console.log(e))
 
-leArquivo(caminhoArquivo)
-
-
+console.log(conteudoArquivo)

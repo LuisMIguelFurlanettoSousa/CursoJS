@@ -9,7 +9,7 @@ const app = express();
 // http://meusite.com/sobre <- GET -> Entregue a pagina sobre
 
 app.get('/', (req, resp) => {
-    resp.send('Hello world!opa merdeus');
+    resp.send('Hello world!');
 });
 
 app.get('/contato', (req, resp) => {
