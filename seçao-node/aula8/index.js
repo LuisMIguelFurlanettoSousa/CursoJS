@@ -3,11 +3,12 @@ const app = express();
 
 // http://facebook.com/profiles/31151425343
 
+app.use(express.urlencoded({extended: true}))
 
 app.get('/', (req, resp) => {
     resp.send(`
         <form action="/" method="POST"> 
-            Nome do Cliente: <input type="text" name="nome">
+            Nome do Cliente: <input type="text" name="name">
             <button>Enviar</button>
         </form>
     `);
@@ -19,7 +20,8 @@ app.get('/testes/:idUsuarios?', (req, resp) => {
 });
 
 app.post('/', (req, resp) => {
-    resp.send('Recebi o fomulario');
+    resp.send(`vc enviou: ${req.body.name}`);
+    console.log(req.body.name)
 });
 
 app.get('/', (req, resp) => {
