@@ -1,0 +1,112 @@
+<%- include('includes/head') %>
+<%- include('includes/nav') %>
+
+<div class="container">
+  <div class="row justify-content-center min-vh-100 align-items-center py-5">
+    <div class="col-lg-10 text-center">
+      <!-- Ilustração SVG animada -->
+      <div class="error-container mb-4">
+        <div class="error-number">
+          <span>4</span>
+          <div class="gear-container">
+            <div class="gear-rotate"></div>
+          </div>
+          <span>4</span>
+        </div>
+      </div>
+      
+      <h1 class="display-4 fw-bold mb-3">Página não encontrada!</h1>
+      <p class="lead mb-4">Ops! Parece que você se perdeu no caminho.</p>
+      <p class="text-muted mb-5">A página que você está procurando pode ter sido removida, renomeada ou está temporariamente indisponível.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CSS personalizado -->
+<style>
+  .error-container {
+    position: relative;
+    height: 180px;
+  }
+  
+  .error-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 150px;
+    font-weight: 800;
+    color: #343a40;
+  }
+  
+  .gear-container {
+    width: 120px;
+    height: 120px;
+    margin: 0 10px;
+    position: relative;
+    background-color: #007bff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
+  }
+  
+  .gear-rotate {
+    width: 85%;
+    height: 85%;
+    background-color: #fff;
+    border-radius: 50%;
+    position: relative;
+    animation: rotate 12s linear infinite;
+  }
+  
+  .gear-rotate:before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #007bff;
+    border-radius: 50%;
+    top: calc(50% - 10px);
+    left: calc(50% - 10px);
+  }
+  
+  .gear-rotate:after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 3px;
+    top: 10px;
+    left: calc(50% - 10px);
+    box-shadow: 
+      0 calc(100% - 30px) 0 0 #fff,
+      calc(50% - 10px) calc(50% - 10px) 0 0 #fff,
+      calc(100% - 30px) 0 0 0 #fff,
+      0 0 0 0 #fff;
+    transform: rotate(45deg);
+  }
+  
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  h1 {
+    animation: fadeInUp 1s ease;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<%- include('includes/footer') %>

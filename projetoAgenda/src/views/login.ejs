@@ -1,0 +1,53 @@
+<%- include('includes/head') %>
+<%- include('includes/nav') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+
+    <div class="col-lg-8 my-3">
+      <h1 class="text-center">Cadastro/login</h1>
+      <p class="text-center lead">Faça login ou crie sua conta abaixo</p>
+
+      <div class="row">
+        <div class="col-lg">
+          <h4>Faça seu Cadastro</h4>
+          <p>Crie sua conta!</p>
+
+          <form action="/login/register" method="post">
+            <div class="form-group">
+              <label>Email address</label>
+              <input type="email" class="form-control" name="email" placeholder="Email">
+            </div>
+
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" class="form-control" name="password" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary my-3">Registrar</button>
+          </form>
+        </div>
+        <div class="col-lg">
+            <h4>Faça seu Login</h4>
+            <p>Se você ja tem uma conta, faça login abaixo: </p>
+
+            <form action="/login/login" method="post">
+                <div class="form-group">
+                  <label>Email address</label>
+                  <input type="email" class="form-control" name="email" placeholder="Email">
+                </div>
+    
+                <div class="form-group">
+                  <label>Password</label>
+                  <input type="password" class="form-control" name="password" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary my-3">entrar</button>
+              </form>
+        </div>
+      </div>
+
+
+  </div>
+</div>
+
+<%- include('includes/footer') %>
